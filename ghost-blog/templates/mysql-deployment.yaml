@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: mysql
   namespace: ghost-blog
+  labels:
+    app: mysql
 spec:
   replicas: 1
   selector:
@@ -31,24 +33,20 @@ spec:
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
-          livenessProbe:
-            exec:
-              command:
-                - mysqladmin
-                - ping
-                - -h
-                - 127.0.0.1
-            initialDelaySeconds: 30
-            periodSeconds: 10
           readinessProbe:
-            exec:
-              command:
-                - mysqladmin
-                - ping
-                - -h
-                - 127.0.0.1
+            tcpSocket:
+              port: 3306
             initialDelaySeconds: 10
             periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 5
           resources:
             requests:
               memory: "512Mi"
