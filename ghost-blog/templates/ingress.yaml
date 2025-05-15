@@ -4,10 +4,11 @@ metadata:
   name: ghost-ingress
   namespace: ghost-blog
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
-  ingressClassName: nginx
   rules:
     - host: blog.cloudmasa.com
       http:
@@ -18,4 +19,4 @@ spec:
               service:
                 name: ghost
                 port:
-                  number: 2368
+                  number: 2368
