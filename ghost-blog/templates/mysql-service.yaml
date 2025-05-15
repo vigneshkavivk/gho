@@ -3,10 +3,13 @@ kind: Service
 metadata:
   name: mysql
   namespace: ghost-blog
+  labels:
+    app: mysql
 spec:
-  type: ClusterIP
-  ports:
-    - port: 3306
-      targetPort: 3306
   selector:
     app: mysql
+  type: ClusterIP
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
