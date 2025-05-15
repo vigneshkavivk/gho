@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: ghost
   namespace: ghost-blog
+  labels:
+    app: ghost
+    argocd.argoproj.io/instance: ghost
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
 spec:
   type: LoadBalancer
   selector:
