@@ -19,4 +19,4 @@ spec:
               service:
                 name: ghost
                 port:
-                  number: 2368
+                  number: 2368
