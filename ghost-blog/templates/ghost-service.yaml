@@ -4,11 +4,11 @@ metadata:
   name: ghost
   namespace: ghost-blog
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: ghost
   ports:
-    - name: ghost-service
-      port: 2368
-      targetPort: 2368
+    - name: https
+      port: 443          # External HTTPS port
+      targetPort: 2368   # Internal Ghost app port
       protocol: TCP
