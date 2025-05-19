@@ -7,8 +7,8 @@ spec:
   selector:
     app: ghost
   ports:
-    - name: http
+    - name: https
       protocol: TCP
-      port: 80            # Expose port 80 to ALB
+      port: 443            # Expose port 80 to ALB
       targetPort: 2368    # Internally forward to Ghost's port
   type: ClusterIP
