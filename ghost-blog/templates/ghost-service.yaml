@@ -3,21 +3,12 @@ kind: Service
 metadata:
   name: ghost
   namespace: ghost-blog
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:939966404706:certificate/ce4f864b-a7e8-47d9-8531-8e17094a6382
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
-    service.beta.kubernetes.io/aws-load-balancer-manage-backend-security-group-rules: "true"
-    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
-    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: ELBSecurityPolicy-TLS-1-2-2017-01
-    service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
-    app: ghost   # This is the correct label based on your Deployment
+    app: ghost
   ports:
     - name: ghost-service
-      port: 443
-      protocol: TCP
+      port: 2368
       targetPort: 2368
+      protocol: TCP
