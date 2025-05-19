@@ -4,7 +4,7 @@ metadata:
   name: ghost
   namespace: ghost-blog
 spec:
-  type: ClusterIP
+  type: NodePort  
   selector:
     app: ghost
   ports:
