@@ -4,7 +4,7 @@ metadata:
   name: ghost
   namespace: ghost-blog
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:225989375392:certificate/bde04bd8-dce3-427e-8976-12bb30734eed
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:939966404706:certificate/ce4f864b-a7e8-47d9-8531-8e17094a6382
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
     service.beta.kubernetes.io/aws-load-balancer-manage-backend-security-group-rules: "true"
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
