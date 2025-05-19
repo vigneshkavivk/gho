@@ -4,11 +4,11 @@ metadata:
   name: ghost
   namespace: ghost-blog
 spec:
-  type: NodePort  
   selector:
     app: ghost
   ports:
-    - name: ghost-service
+    - name: http  # <-- FIXED: Changed from ghost-service to http
+      protocol: TCP
       port: 2368
       targetPort: 2368
-      protocol: TCP
+  type: NodePort
