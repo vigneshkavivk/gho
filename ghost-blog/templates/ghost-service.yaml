@@ -7,8 +7,8 @@ spec:
   selector:
     app: ghost
   ports:
-    - name: http  # <-- FIXED: Changed from ghost-service to http
+    - name: http
       protocol: TCP
       port: 2368
       targetPort: 2368
-  type: NodePort
+  type: ClusterIP
