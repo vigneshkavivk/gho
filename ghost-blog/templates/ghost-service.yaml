@@ -9,6 +9,6 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 2368
-      targetPort: 2368
+      port: 80            # Expose port 80 to ALB
+      targetPort: 2368    # Internally forward to Ghost's port
   type: ClusterIP
