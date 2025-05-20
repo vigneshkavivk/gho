@@ -67,7 +67,7 @@ spec:
             - name: mail__options__service
               value: Gmail
             - name: mail__options__auth__user
-              value: your.email@gmail.com
+              value: thirunavukkarasu.email@gmail.com
             - name: mail__options__auth__pass
               valueFrom:
                 secretKeyRef:
