@@ -43,7 +43,7 @@ spec:
               mountPath: /var/lib/ghost/content
       containers:
         - name: ghost
-          image: ghost:5.115.1
+          image: ghost:5.119.1
           imagePullPolicy: Always
           ports:
             - containerPort: 2368
