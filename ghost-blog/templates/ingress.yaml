@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:939966404706:certificate/ce4f864b-a7e8-47d9-8531-8e17094a6382
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:721249950004:certificate/0bafab85-2687-462d-9ceb-385742e8d484
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/group.name: ghost-alb-group
     alb.ingress.kubernetes.io/load-balancer-name: ghost-blog-alb
