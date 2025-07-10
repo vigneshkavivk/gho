@@ -14,6 +14,7 @@ metadata:
     alb.ingress.kubernetes.io/subnets: subnet-069b1a0afb261393b,subnet-053ea713510ea961e
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/success-codes: '200-399'
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: "true"
