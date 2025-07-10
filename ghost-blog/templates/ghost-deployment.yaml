@@ -41,6 +41,14 @@ spec:
           volumeMounts:
             - name: ghost-storage
               mountPath: /var/lib/ghost/content
+        - name: wait-for-mysql
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for MySQL to be ready..." && \
+              until nc -zv mysql 3306; do echo "Waiting..."; sleep 2; done
       containers:
         - name: ghost
           image: ghost:5.119.1
