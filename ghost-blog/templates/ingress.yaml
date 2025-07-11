@@ -26,7 +26,6 @@ spec:
     - host: blog.cloudmasa.com
       http:
         paths:
-          # HTTP → HTTPS redirect
           - path: /*
             pathType: ImplementationSpecific
             backend:
@@ -34,11 +33,10 @@ spec:
                 name: ssl-redirect
                 port:
                   name: use-annotation
-          # Main Ghost backend path
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: ghost
                 port:
-                  number: 80  # 👈 Must match service port (mapped to 2368)
+                  number: 80
