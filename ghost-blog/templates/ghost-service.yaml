@@ -8,7 +8,7 @@ spec:
     app: ghost
   ports:
     - name: http
+      port: 80
+      targetPort: 2368
       protocol: TCP
-      port: 80         # Service port exposed to ALB
-      targetPort: 2368 # Ghost listens on 2368 internally
   type: ClusterIP
