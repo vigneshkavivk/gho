@@ -3,14 +3,12 @@ kind: Service
 metadata:
   name: ghost
   namespace: ghost-blog
-  labels:
-    app: ghost
 spec:
   selector:
-    app: ghost  # Ensure your Ghost Deployment has this label
+    app: ghost
   ports:
     - name: http
-      port: 80            # Port exposed to Ingress (ALB)
-      targetPort: 2368    # Actual port used by Ghost container
       protocol: TCP
+      port: 80         # Service port exposed to ALB
+      targetPort: 2368 # Ghost listens on 2368 internally
   type: ClusterIP
