@@ -7,10 +7,10 @@ metadata:
     app: ghost
 spec:
   selector:
-    app: ghost  # Must match the label on your Ghost Deployment/Pod
+    app: ghost  # Ensure your Ghost Deployment has this label
   ports:
     - name: http
+      port: 80            # Port exposed to Ingress (ALB)
+      targetPort: 2368    # Actual port used by Ghost container
       protocol: TCP
-      port: 80            # Port exposed inside the cluster (and to ALB)
-      targetPort: 2368    # Port exposed by the Ghost container
   type: ClusterIP
