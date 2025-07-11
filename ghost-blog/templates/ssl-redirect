@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssl-redirect
+  namespace: ghost-blog
+spec:
+  ports:
+    - name: use-annotation
+      port: 80
+      targetPort: 80
+  selector:
+    app: ghost  # Just point to the ghost pod; it won’t get used
+  type: ClusterIP
