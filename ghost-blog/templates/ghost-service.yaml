@@ -3,12 +3,14 @@ kind: Service
 metadata:
   name: ghost
   namespace: ghost-blog
+  labels:
+    app: ghost
 spec:
   selector:
-    app: ghost
+    app: ghost  # Must match the label on your Ghost Deployment/Pod
   ports:
     - name: http
       protocol: TCP
-      port: 80            # Expose port 80 to ALB
-      targetPort: 2368    # Internally forward to Ghost's port
+      port: 80            # Port exposed inside the cluster (and to ALB)
+      targetPort: 2368    # Port exposed by the Ghost container
   type: ClusterIP
