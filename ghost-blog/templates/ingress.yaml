@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/group.name: ghost-alb-group
     alb.ingress.kubernetes.io/load-balancer-name: ghost-blog-alb
-    alb.ingress.kubernetes.io/subnets: subnet-072c7ea3741b8ad57,subnet-0e2c56cb126ebd0e0
+    alb.ingress.kubernetes.io/subnets: subnet-0d3f2c084ab32b857,subnet-0bdaf07e787f9db0f
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/healthcheck-path: /
     alb.ingress.kubernetes.io/healthcheck-port: "2368"  # ✅ Important fix: real port inside container
