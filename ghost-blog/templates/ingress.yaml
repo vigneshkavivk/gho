@@ -29,7 +29,6 @@ metadata:
         }
       }
 spec:
- ingressClassName: nginx
   rules:
     - host: blog.cloudmasa.com
       http:
