@@ -68,8 +68,6 @@ spec:
               value: ghostpassword
             - name: database__connection__database
               value: ghostdb
-
-            # SMTP CONFIGURATION (EXPLICIT)
             - name: mail__transport
               value: SMTP
             - name: mail__options__host
@@ -85,7 +83,6 @@ spec:
                 secretKeyRef:
                   name: ghost-smtp-secret
                   key: smtp-password
-
           securityContext:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
@@ -101,10 +98,24 @@ spec:
             httpGet:
               path: /
               port: 2368
-            initialDelaySeconds: 5
+              httpHeaders:
+                - name: Accept
+                  value: text/html
+            initialDelaySeconds: 10
             periodSeconds: 10
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 2368
+              httpHeaders:
+                - name: Accept
+                  value: text/html
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 5
       volumes:
         - name: ghost-storage
           persistentVolumeClaim:
