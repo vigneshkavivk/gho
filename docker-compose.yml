@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  python-app:
+    build: ./python-app
+    container_name: python-app
+    expose:
+      - 5000
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - python-app
