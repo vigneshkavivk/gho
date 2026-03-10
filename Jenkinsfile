@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "Checking out code..."
-                git url: 'https://github.com/yourusername/yourrepo.git', branch: 'main'
+                git url: 'https://github.com/vigneshkavivk/gho.git', branch: 'main'
             }
         }
 
