@@ -14,6 +14,19 @@ pipeline {
             }
         }
 
+        stage('Install Docker Compose') {
+            steps {
+                echo "Installing Docker Compose inside Jenkins container..."
+                sh '''
+                    if ! command -v docker-compose >/dev/null 2>&1; then
+                        curl -SL https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+                        chmod +x /usr/local/bin/docker-compose
+                    fi
+                    docker-compose version
+                '''
+            }
+        }
+
         stage('Build & Deploy Containers') {
             steps {
                 echo "Stopping any existing containers..."
