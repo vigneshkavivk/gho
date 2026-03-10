@@ -9,32 +9,38 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                echo "Checking out code..."
                 git url: 'https://github.com/yourusername/yourrepo.git', branch: 'main'
             }
         }
 
-        stage('Build & Deploy') {
+        stage('Build & Deploy Containers') {
             steps {
-                script {
-                    // Build and start containers
-                    sh "docker-compose down"
-                    sh "docker-compose up --build -d"
-                }
+                echo "Stopping any existing containers..."
+                sh "docker-compose down || true"
+
+                echo "Building and starting Python app + Nginx..."
+                sh "docker-compose up --build -d"
             }
         }
 
-        stage('Verify') {
+        stage('Verify Deployment') {
             steps {
-                script {
-                    sh "docker ps"
-                }
+                echo "Checking running containers..."
+                sh "docker ps"
+
+                echo "Checking Python app response via Nginx..."
+                sh "curl -s http://localhost:80"
             }
         }
     }
 
     post {
         always {
-            echo 'Pipeline finished'
+            echo 'Jenkins pipeline finished.'
+        }
+        failure {
+            echo 'Deployment failed. Check logs.'
         }
     }
 }
