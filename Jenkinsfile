@@ -30,13 +30,12 @@ pipeline {
         stage('Build & Deploy Containers') {
             steps {
                 echo "Stopping any existing containers..."
-                sh "docker-compose down || true"
-
+                sh "docker compose down || true"
+        
                 echo "Building and starting Python app + Nginx..."
-                sh "docker-compose up --build -d"
+                sh "docker compose up --build -d"
             }
         }
-
         stage('Verify Deployment') {
             steps {
                 echo "Checking running containers..."
