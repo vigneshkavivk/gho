@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   python-app:
-    build: ./python-app
+    build: .
     container_name: python-app
     expose:
       - 5000
@@ -11,6 +11,7 @@ services:
     build: ./nginx
     container_name: nginx
     ports:
-      - "80:80"
+      - "8087:80"
     depends_on:
       - python-app
+      
